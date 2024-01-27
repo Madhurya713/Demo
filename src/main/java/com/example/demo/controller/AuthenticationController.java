@@ -55,7 +55,6 @@ public class AuthenticationController {
         // Your logic to handle file
         String fileName = file.getOriginalFilename();
         // Save the file, process it, etc.
-
         return ResponseEntity.ok("File uploaded successfully: " + fileName);
     }
 }
