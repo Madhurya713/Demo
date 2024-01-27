@@ -14,7 +14,9 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
 @RestController("jwt")
 public class AuthenticationController {
@@ -46,5 +48,14 @@ public class AuthenticationController {
         final String jwt = jwtTokenUtil.generateToken("");
 
         return ResponseEntity.ok(new AuthenticationResponse(jwt));
+    }
+
+    @PostMapping("/upload")
+    public ResponseEntity<String> uploadFile(@RequestParam("file") MultipartFile file) {
+        // Your logic to handle file
+        String fileName = file.getOriginalFilename();
+        // Save the file, process it, etc.
+
+        return ResponseEntity.ok("File uploaded successfully: " + fileName);
     }
 }

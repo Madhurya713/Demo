@@ -37,8 +37,8 @@ public class SecurityConfiguration {
                 .authorizeHttpRequests(authz -> authz
                         .requestMatchers("/jwt/**").permitAll()
                         .requestMatchers("/authenticate").permitAll()  // Permit all for authentication endpoint
-                        .requestMatchers("/admin/**").hasRole("ADMIN") // Only users with ROLE_ADMIN can access /admin/**
-                        .requestMatchers("/user/**").hasRole("USER")   // Only users with ROLE_USER can access /user/**
+                        .requestMatchers("/admin/**").permitAll()/*.hasRole("ADMIN")*/ // Only users with ROLE_ADMIN can access /admin/**
+                        .requestMatchers("/user/**").permitAll()/*.hasRole("USER")  */ // Only users with ROLE_USER can access /user/**
                         .anyRequest().authenticated()                  // All other requests need to be authenticated
                 )
 
